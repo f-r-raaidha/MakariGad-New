@@ -1,26 +1,55 @@
+
 @import "tailwindcss";
+/*@import "tailwindcss/base";*/
+/*@import "tailwindcss/components";*/
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*@theme inline {*/
+/*  --color-background: var(--background);*/
+/*  --color-foreground: var(--foreground);*/
+/*  --font-sans: var(--font-geist-sans);*/
+/*  --font-mono: var(--font-geist-mono);*/
+/*}*/
+html,
+body {
+    height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Global Typography (Tailwind v4 style) */
+@layer base {
+    /* Headings → Montserrat */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+    }
+
+    /* Body → Poppins */
+    body, a, span, li {
+        font-family: var(--font-body);
+    }
+
+    p{
+        font-family: var(--font-links);
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    /* Optional sizing & rhythm */
+    h1 { @apply text-4xl md:text-5xl font-bold leading-tight; }
+    h2 { @apply text-3xl md:text-4xl font-semibold; }
+    h3 { @apply text-2xl font-semibold; }
+    h4 { @apply text-xl font-medium; }
+    h5 { @apply text-lg font-medium; }
+    h6 { @apply text-base font-medium; }
+
+    p  { @apply text-base leading-7 text-gray-800; }
+    a  { @apply text-base text-blue-600 no-underline underline-offset-2  hover:text-blue-700; }
 }
