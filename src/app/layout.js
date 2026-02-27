@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Poppins, Montserrat,Inter } from "next/font/google";
+import {Poppins, Montserrat, Inter} from "next/font/google";
 
 // Components
 import Header from "@/components/Header";
@@ -23,8 +23,6 @@ const montserrat = Montserrat({
     weight: ["500", "600", "700"],
     variable: "--font-body",  // used in globals.css (headings)
 });
-
-
 
 
 export const metadata = {
