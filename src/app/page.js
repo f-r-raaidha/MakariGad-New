@@ -1,10 +1,16 @@
 import React from "react";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
+import ThreeCardSlider from "@/components/Three-Card-Slider";
+import IntroTextWithDescription from "@/components/IntroTextWithDescription";
+
+// border-2 caret-amber-100 bg-zinc-50
 
 export default function HomePage() {
     return (
-        <div className="home-page w-[90%] mx-auto  border-2 caret-amber-100 bg-zinc-50 font-sans ">
+        <div className="home-page w-[90%] mx-auto font-sans ">
             <HomeHeroSlider/>
+            <IntroTextWithDescription/>
+            <ThreeCardSlider/>
         </div>
     );
 }

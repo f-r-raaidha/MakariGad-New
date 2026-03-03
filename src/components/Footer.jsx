@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 
 function Footer() {
     const container = {
@@ -35,8 +36,16 @@ function Footer() {
             >
                 {/* Column 1 */}
                 <motion.div variants={item} className="space-y-6">
+
+
+
                     <h2 className="text-2xl font-bold tracking-wide text-gray-900">
-                        MyLogo
+                        <Image
+                            src={"/images/footer-logo.png"}
+                            alt="Hero Image"
+                            width={120}
+                            height={81}
+                        />
                     </h2>
 
                     <div className="flex gap-5 text-xl text-gray-600">
