@@ -2,6 +2,7 @@ import React from "react";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
 import ThreeCardSlider from "@/components/Three-Card-Slider";
 import IntroTextWithDescription from "@/components/IntroTextWithDescription";
+import HomeGradient from "../components/HomeGradient";
 
 // border-2 caret-amber-100 bg-zinc-50
 
@@ -10,7 +11,8 @@ export default function HomePage() {
         <div className="home-page w-[90%] mx-auto font-sans ">
             <HomeHeroSlider/>
             <IntroTextWithDescription/>
-            <ThreeCardSlider/>
+            <HomeGradient/>
+            {/*<ThreeCardSlider/>*/}
         </div>
     );
 }
