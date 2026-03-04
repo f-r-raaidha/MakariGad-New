@@ -42,7 +42,7 @@ next-env.d.ts
 
 
 # IDE
-./idea
+.idea
 
 #TODO Env files
 *.env
