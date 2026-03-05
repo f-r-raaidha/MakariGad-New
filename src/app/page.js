@@ -12,7 +12,7 @@ export default function HomePage() {
             <HomeHeroSlider/>
             <IntroTextWithDescription/>
             <HomeGradient/>
-            {/*<ThreeCardSlider/>*/}
+            <ThreeCardSlider/>
         </div>
     );
 }
