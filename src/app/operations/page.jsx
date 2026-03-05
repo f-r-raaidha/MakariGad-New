@@ -13,3 +13,5 @@ const OperationPage = () => {
     )
 
 }
+
+export default OperationPage;
