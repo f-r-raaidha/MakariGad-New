@@ -20,15 +20,15 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 px-4">
-      <div className="mx-auto max-w-[1162px] rounded-2xl bg-zinc-100/80 backdrop-blur-md shadow-md border-b-2 border-gray-300">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-100px)]">
+      <div className="w-full rounded-2xl bg-zinc-100/80 backdrop-blur-md shadow-lg border-b-[3px] border-gray-300">
 
-        <div className="flex items-center justify-between px-8 py-6">
+        <div className="flex items-center justify-between px-8 py-4">
 
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 2, x: -20 }}
+            animate={{ opacity: 4, x: 0 }}
             transition={{ duration: 0.4 }}
             className="text-xl font-semibold"
           >
