@@ -1,7 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination, Navigation, EffectFade, EffectCreative} from "swiper/modules";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "swiper/css/effect-creative";
 
 function HomeHeroSlider() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -35,10 +36,20 @@ function HomeHeroSlider() {
     ];
 
     return (
-        <section className="w-full h-screen">
+        <section className="hero-slider w-full h-[520px]">
             <Swiper
-                modules={[Autoplay, Pagination, Navigation, EffectFade]}
-                effect="fade"
+                modules={[Autoplay, Pagination, Navigation, EffectCreative]}
+                effect="creative"
+                creativeEffect={{                    
+                    prev: {
+                        shadow: true,
+                        translate: ["-110%", 0, -500],
+                    },
+                    next: {
+                        shadow: true,
+                        translate: ["110%", 0, -500],
+                    },
+                }}
                 loop
                 speed={1200}
                 autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -49,7 +60,7 @@ function HomeHeroSlider() {
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={slide.id}>
-                        <div className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+                        <div className="relative w-full h-[520px] rounded-xl overflow-hidden flex items-center justify-center">
 
                             {/* Animated Background */}
                             <motion.div
@@ -62,7 +73,7 @@ function HomeHeroSlider() {
                             />
 
                             {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/60" />
+                            <div className="absolute inset-0 bg-black/20" />
 
                             {/* Animated Content */}
                             <motion.div

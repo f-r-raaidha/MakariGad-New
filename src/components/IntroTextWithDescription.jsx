@@ -3,7 +3,7 @@ import React from 'react';
 const IntroTextWithDescription = () => {
 
     return (
-        <section className={"intro-text flex flex-col w-full align-items-center text-center  max-w-3/4 mx-auto"}>
+        <section className={"intro-text flex flex-col w-full align-items-center text-center  max-w-3/4 mx-auto pt-10"}>
 
             <h2>Harnessing Nature's Power for a Sustainable Future</h2>
 

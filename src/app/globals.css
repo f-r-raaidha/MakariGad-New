@@ -61,11 +61,44 @@ body {
 /*Overriding Default Styling in Swiper*/
 
 .three-card-slider .swiper-pagination-bullet {
-    background-color: #fa6060;
+    background-color: rgb(220, 52, 144);
     /* background-color: #C4C4C4;*/
 }
 
 .three-card-slider .swiper-pagination-bullet-active {
     background-color: #000;
 }
+/*Swiper Navigation Styling*/
+.hero-slider .swiper-button-next,
+.hero-slider .swiper-button-prev {
+  width: 56px;             /* Bigger circle */
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;           /* arrow color */
+  top: auto;        /* arrow size */
+  left: auto;
+  right: 20px;
+}
+.hero-slider .swiper-button-prev {
+  bottom: calc(50% + 52px);   /* above center */
+}
+
+.hero-slider .swiper-button-next {
+  bottom: calc(50% - 4px);    /* below center */
+}
+
+/* Fix arrow size — arrow is ::after pseudo-element */
+.hero-slider .swiper-button-next::after,
+.hero-slider .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+
+
+
 
