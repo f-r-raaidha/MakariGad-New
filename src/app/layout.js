@@ -41,9 +41,12 @@ export default function RootLayout({children}) {
 
         <Header/>
         <main className={" flex-1 w-full"}>
-            <h1>HEADING 1</h1>
-            <h2>HEADING 2</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, vel?</p>
+             <br></br>
+            <br></br>
+             <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             {children}
         </main>
         <Footer/>
