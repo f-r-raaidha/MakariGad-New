@@ -1,6 +1,9 @@
+"use client"
+
+
 import HomeHeroSlider from "@/components/HomeHeroSlider";
-import React from "react";
 import ContactInfoBlock from "@/components/ContactInfoBlock";
+import ContactAndMapBlock from "@/components/ContactAndMapBlock";
 
 const ContactPage = () => {
     return (
@@ -9,6 +12,7 @@ const ContactPage = () => {
 
             <HomeHeroSlider/>
             <ContactInfoBlock/>
+            <ContactAndMapBlock/>
 
         </div>
     )
@@ -16,3 +20,4 @@ const ContactPage = () => {
 }
 
 export default ContactPage;
+
