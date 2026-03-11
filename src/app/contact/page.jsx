@@ -1,13 +1,18 @@
+"use client"
+
+
+import HomeHeroSlider from "@/components/HomeHeroSlider";
+import ContactInfoBlock from "@/components/ContactInfoBlock";
+import ContactAndMapBlock from "@/components/ContactAndMapBlock";
+
 const ContactPage = () => {
-
-
     return (
 
-        <div className="container">
+        <div className="container w-full mx-auto ">
 
-
-        <h1></h1>
-
+            <HomeHeroSlider/>
+            <ContactInfoBlock/>
+            <ContactAndMapBlock/>
 
         </div>
     )
@@ -15,3 +20,4 @@ const ContactPage = () => {
 }
 
 export default ContactPage;
+
