@@ -56,7 +56,7 @@ export default function Header() {
                 className={`text-xl font-semibold transition-colors duration-300 ${isActive ? "text-zinc-900" : "text-neutral-600" } hover:text-sky-600`}
               >
                 {link.name}
-                {/*Please change hover, select colours later*/}
+                
                 <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-neutral-600 transition-all duration-300 group-hover:w-full"></span>
                 
               </Link>

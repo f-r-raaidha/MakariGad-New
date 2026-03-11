@@ -51,7 +51,7 @@ function HomeHeroSlider() {
                     },
                 }}
                 loop
-                speed={1200}
+                speed={1300}
                 autoplay={{ delay: 5000, disableOnInteraction: false }}
                 pagination={{ clickable: true }}
                 navigation
