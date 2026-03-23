@@ -38,7 +38,7 @@ function HomeGradientIntro() {
                     whileHover={{ y: -8 }}
                     className="bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-md text-center min-h-[220px] flex flex-col justify-center transition"
                 >
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                    <h3 className="text-xl font-semibold mb-3  text-[#1da1f2]">
                         {card.title}
                     </h3>
                     <p className="text-sm text-gray-600">
