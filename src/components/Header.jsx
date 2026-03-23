@@ -14,7 +14,8 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Plant Operations", href: "/operations" },
-    { name: "Contact", href: "/contact" },
+    { name: "Our Leaders", href: "/our-leaders"},
+    { name: "Contact Us", href: "/contact" }    
   ];
 
   const pathname = usePathname();

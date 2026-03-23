@@ -2,7 +2,7 @@
 
 const currentYear = new Date().getFullYear();
 
-const SITE_MAP = ["Home", "About Us", "Plant Operations", "Contact Us"];
+const SITE_MAP = ["Home", "About Us", "Plant Operations","Our Leaders", "Contact Us"];
 
 export function FooterWithSocialLinks() {
   return (
@@ -65,9 +65,10 @@ export function FooterWithSocialLinks() {
               Head Office Address
             </p>
             <p className="text-base text-gray-600 font-normal leading-7">
-              67, Park Street<br />
-              Colombo 02<br />
-              Sri Lanka
+              P8QP+JMM <br />
+              Maharajgunj<br />
+              Kathmandu<br />
+              Nepal
             </p>
           </div>
 
@@ -76,12 +77,12 @@ export function FooterWithSocialLinks() {
             <p className="text-base font-semibold">
               Telephone No
             </p>
-            <p className="text-base text-gray-600 font-normal">+94 000 0000</p>
+            <p className="text-base text-gray-600 font-normal">+977 986 134 1293</p>
 
             <p className="text-base font-semibold mt-2">
               Email
             </p>
-            <a  /* ✅ fixed: was missing opening < */
+            <a  
               href="mailto:info@ltlhydro.com"
               className="text-base text-gray-600 font-normal hover:text-gray-900 transition-colors"
             >
