@@ -1,9 +1,8 @@
 "use client";
 
 import React from 'react';
-import ContactForm from "@/components/ContactForm";
-import LtlMap from "@/components/LTLMap";
 import GoogleMapBlock from "@/components/GoogleMapBlock";
+import ContactForm from "@/components/ContactForm";
 
 const ContactAndMapBlock = () => {
     return (

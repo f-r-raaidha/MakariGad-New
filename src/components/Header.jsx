@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import {useState} from "react";
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+
+   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "/" },
