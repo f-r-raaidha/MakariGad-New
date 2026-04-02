@@ -13,7 +13,7 @@ function sanitize(value) {
     return value.replace(/[<>]/g, "");
 }
 
-export async function submitContact(prevState, formData) {
+export async function submitContact(prevformState, formData) {
 
     const data = {
         firstName: sanitize(formData.get("firstName") || ""),
