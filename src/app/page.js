@@ -9,6 +9,11 @@ import HomeGradient from "../components/HomeGradient";
 export default function HomePage() {
     return (
         <div className="home-page w-[90%] mx-auto font-sans ">
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <HomeHeroSlider/>
             <IntroTextWithDescription/>
             <HomeGradient/>

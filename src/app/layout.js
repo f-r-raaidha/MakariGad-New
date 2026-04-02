@@ -1,9 +1,11 @@
 import "./globals.css";
 import {Poppins, Montserrat, Inter} from "next/font/google";
 
+
 // Components
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+//import Footer from "@/components/Footer";//
+import { FooterWithSocialLinks } from "@/components/footer-2";
 
 
 const inter = Inter({
@@ -39,6 +41,7 @@ export default function RootLayout({children}) {
             className={` ${poppins.variable} ${montserrat.variable} antialiased   w-full min-h-screen flex flex-col`}
         >
 
+        
         <Header/>
         <main className={" flex-1 w-full"}>
              <br></br>
@@ -46,9 +49,12 @@ export default function RootLayout({children}) {
             <br></br>
             <br></br>
             <br></br>
+            
             {children}
         </main>
-        <Footer/>
+        
+        <FooterWithSocialLinks/>
+        
 
         </body>
         </html>

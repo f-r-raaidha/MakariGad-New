@@ -16,13 +16,14 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Plant Operations", href: "/operations" },
-    { name: "Contact", href: "/contact" },
+    { name: "Our Leaders", href: "/our-leaders"},
+    { name: "Contact Us", href: "/contact" }    
   ];
 
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-100px)]">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 md:px-12">
       <div className="w-full rounded-2xl bg-zinc-100/80 backdrop-blur-md shadow-lg border-b-[3px] border-gray-300">
 
         <div className="flex items-center justify-between px-8 py-4">
@@ -58,7 +59,7 @@ export default function Header() {
                 className={`text-xl font-semibold transition-colors duration-300 ${isActive ? "text-zinc-900" : "text-neutral-600" } hover:text-sky-600`}
               >
                 {link.name}
-                {/*Please change hover, select colours later*/}
+                
                 <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-neutral-600 transition-all duration-300 group-hover:w-full"></span>
                 
               </Link>
@@ -94,11 +95,7 @@ export default function Header() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`
-          text-lg font-medium transition-colors duration-300
-          ${isActive ? "text-zinc-900" : "text-neutral-600"} 
-          hover:text-sky-500
-        `}
+                    className={`text-lg font-medium transition-colors duration-300 ${isActive ? "text-zinc-900" : "text-neutral-600"} hover:text-sky-500`}
 
                   >
                     {link.name}
