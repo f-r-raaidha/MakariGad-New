@@ -2,7 +2,13 @@
 
 const currentYear = new Date().getFullYear();
 
-const SITE_MAP = ["Home", "About Us", "Plant Operations","Our Leaders", "Contact Us"];
+const SITE_MAP = [
+  { label: "Home", href: "/"},
+  { label: "About Us", href: "/about"},
+  { label: "Plant Operations", href: "/operations"},
+  { label: "Our Leaders", href: "/our-leaders"},
+  { label: "Contact Us", href: "/contact"},
+  ];
 
 export function FooterWithSocialLinks() {
   return (
@@ -50,11 +56,11 @@ export function FooterWithSocialLinks() {
             </p>
             {SITE_MAP.map((item) => (
               <a  
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className="text-base text-gray-600 font-normal hover:text-gray-900 transition-colors"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>

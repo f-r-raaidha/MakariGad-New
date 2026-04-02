@@ -21,7 +21,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-100px)]">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 md:px-12">
       <div className="w-full rounded-2xl bg-zinc-100/80 backdrop-blur-md shadow-lg border-b-[3px] border-gray-300">
 
         <div className="flex items-center justify-between px-8 py-4">
@@ -93,11 +93,7 @@ export default function Header() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`
-          text-lg font-medium transition-colors duration-300
-          ${isActive ? "text-zinc-900" : "text-neutral-600"} 
-          hover:text-sky-500
-        `}
+                    className={`text-lg font-medium transition-colors duration-300 ${isActive ? "text-zinc-900" : "text-neutral-600"} hover:text-sky-500`}
 
                   >
                     {link.name}

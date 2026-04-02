@@ -18,7 +18,7 @@
 export default function SectionHero({ title, backgroundImage, overlayOpacity = 30 }) {
   return (
     <section
-      className="relative w-full h-[563px] overflow-hidden"
+      className="relative w-full h-[400px] overflow-hidden"
       aria-label={title}
     >
       {/* ── Background image — fills full screen width ── */}
@@ -40,12 +40,7 @@ export default function SectionHero({ title, backgroundImage, overlayOpacity = 3
       {/* ── Title centred vertically and horizontally ── */}
       <div className="absolute inset-0 flex items-center justify-center">
         <h1
-          className="
-            text-center text-white
-            text-6xl font-medium
-            font-['Poppins'] leading-[61.60px]
-            tracking-wide
-          "
+          className="text-center text-white text-5xl font-medium font-['Poppins'] leading-[61.60px] tracking-wide"
           style={{
             textShadow: `
               0 0 20px rgba(255,255,255,0.2),
