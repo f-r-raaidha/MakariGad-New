@@ -1,19 +1,26 @@
 "use client"
-
-
-import HomeHeroSlider from "@/components/HomeHeroSlider";
 import ContactInfoBlock from "@/components/ContactInfoBlock";
 import ContactAndMapBlock from "@/components/ContactAndMapBlock";
+import SectionHero from "@/components/SectionHero";
 
 const ContactPage = () => {
     return (
 
-        <div className="container w-full mx-auto ">
+        <div className="">
+            <SectionHero title="About Us" backgroundImage="/images/CardImages/p4_makariguard_14.png" />
+            <div></div>
 
-            <HomeHeroSlider/>
+            <div className=" min-h-screen w-[90%] mx-auto pb-30 justify-center items-center">
+                <ContactAndMapBlock/>
             <ContactInfoBlock/>
-            <ContactAndMapBlock/>
 
+
+                </div>
+            
+
+            
+            
+            
         </div>
     )
 

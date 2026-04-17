@@ -38,17 +38,12 @@ export default function RootLayout({children}) {
     return (
         <html lang="en">
         <body
-            className={` ${poppins.variable} ${montserrat.variable} antialiased   w-full min-h-screen flex flex-col`}
+            className={` ${poppins.variable} ${montserrat.variable}antialiased w-full min-h-screen flex flex-col`}
         >
 
         
         <Header/>
         <main className={" flex-1 w-full"}>
-             <br></br>
-             <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             
             {children}
         </main>

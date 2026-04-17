@@ -1,5 +1,6 @@
 import { HorizontalCard } from "@/components/CardWithImage";
 import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
 
 const articles = [
     {
@@ -16,12 +17,17 @@ const OperationPage = () => {
 
         <><div className="min-h-screen bg-linear-to-b bg-fixed from-neutral-200 to-sky-600/90 flex justify-center items-center py-25">
 
+            
             <div className="w-full max-w-5xl flex flex-col gap-6 p-8">
+                <FadeIn>
                 {articles.map((item) => (
                     <HorizontalCard key={item.id} item={item} />
                 ))}
+                </FadeIn>
+                <FadeIn>
                 <div className="flex flex-col md:flex-row gap-6">
-                    <div className="bg-zinc-100 rounded-2xl p-6 flex-1">
+                    
+                    <div className="bg-zinc-100 rounded-2xl p-6 flex-1 font-[Poppins]">
                         <div className="mx-8">
                             <p className="text-2xl text-sky-600 font-semibold pb-3 mt-4">Plant Technical Details</p>
                             <ul className="space-y-2 text-sm text-gray-400 list-disc list-inside">
@@ -88,7 +94,10 @@ const OperationPage = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="bg-zinc-100 rounded-2xl p-6 flex-1">
+                    
+                    
+                    <div className="bg-zinc-100 rounded-2xl p-6 flex-1 font-[Poppins]">
+                        
                         <div className="mx-8">
                             <p className="text-2xl text-sky-600 font-semibold pb-3 mt-4">Advanced Turbine Technology</p>
                             <p className="text-slate-500 text-sm font-normal font-[Poppins] text-left leading-relaxed wrap-break-words whitespace-pre-line mb-5">
@@ -99,12 +108,17 @@ const OperationPage = () => {
                                 A streamlined design with fewer components ensures high efficiency, low maintenance, and reduced downtime.
                             </p>
                         </div>
+                        
                         <Image src="/images/CardImages/p4_makariguard_10.png" width={300} height={300} alt="" className="h-48 w-full md:h-60 object-cover rounded-xl " />
                     </div>
+                    
+                    
 
 
                 </div>
-                <div className="bg-zinc-100 rounded-2xl p-6 w-full max-w-5xl flex flex-col md:flex-row cursor-pointer hover:shadow-lg transition-shadow duration-300">
+                </FadeIn>
+                <FadeIn>
+                <div className="bg-zinc-100 font-[Poppins] rounded-2xl p-6 w-full max-w-5xl flex flex-col md:flex-row cursor-pointer hover:shadow-lg transition-shadow duration-300">
                     <div className="flex flex-col justify-center mx-8">
                         <p className="text-2xl text-sky-600 font-semibold pb-3 mt-4">High Plant Factor</p>
                         <p className="text-slate-500 text-sm font-normal font-[Poppins] text-left leading-relaxed wrap-break-words whitespace-pre-line mb-5">
@@ -120,7 +134,9 @@ const OperationPage = () => {
 
                         </div>
                     </div>
+                    </FadeIn>
                 </div>
+            
         </div></>
 
 

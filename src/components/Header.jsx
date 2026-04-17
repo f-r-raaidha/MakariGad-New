@@ -17,13 +17,15 @@ export default function Header() {
     { name: "About Us", href: "/about" },
     { name: "Plant Operations", href: "/operations" },
     { name: "Our Leaders", href: "/our-leaders"},
-    { name: "Contact Us", href: "/contact" }    
+    { name: "Contact Us", href: "/contact" },
+    
+        
   ];
 
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 md:px-12">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 md:px-12 font-[Poppins]">
       <div className="w-full rounded-2xl bg-zinc-100/80 backdrop-blur-md shadow-lg border-b-[3px] border-gray-300">
 
         <div className="flex items-center justify-between px-8 py-4">

@@ -1,96 +1,126 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation, Keyboard } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-function CardSlider() {
+export default function ThreeCardSlider({ slides }) {
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
-    const cards = [
-        {
-            id: 1,
-            title: "Creative Design",
-            desc: "Modern and clean designs built for performance.",
-            image:
-                "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-        },
-        {
-            id: 2,
-            title: "Development",
-            desc: "Scalable and high-quality code architecture.",
-            image:
-                "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-        },
-        {
-            id: 3,
-            title: "Marketing",
-            desc: "Smart digital strategies that convert users.",
-            image:
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-        },
-        {
-            id: 4,
-            title: "Branding",
-            desc: "Build a strong and memorable brand identity.",
-            image:
-                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-        },
-    ];
+    // Close lightbox on Escape
+    const handleKeyDown = useCallback((e) => {
+        if (e.key === "Escape") setSelectedIndex(null);
+    }, []);
+
+    useEffect(() => {
+        if (selectedIndex !== null) {
+            document.addEventListener("keydown", handleKeyDown);
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            document.body.style.overflow = "";
+        };
+    }, [selectedIndex, handleKeyDown]);
 
     return (
-        <section className="three-card-slider w-full  py-5 flex flex-col">
+        <section className="w-full py-10 px-6">
+            <div className="max-w-6xl mx-auto">
 
+                <h2 className="text-sky-500 text-xl font-bold font-['Poppins'] mb-6 ml-12">
+                    Our Gallery
+                </h2>
 
-            <h2 className={""}>Our Gallery</h2>
-
-            <div className=" mx-auto  w-full">
-
-                <Swiper
-                    modules={[Pagination]}
-                    spaceBetween={30}
-                    pagination={{ clickable: true }}
-                    breakpoints={{
-                        0: { slidesPerView: 1 },
-                        640: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 },
-                    }}
-                >
-                    {cards.map((card) => (
-                        <SwiperSlide key={card.id}>
-                            <div className="  overflow-hidden h-[327px] flex flex-col transition duration-300 hover:shadow-xl">
-
-                                {/* Image */}
+                <div className="relative px-10">
+                    {/* ── Thumbnail Swiper ── */}
+                    <Swiper
+                        modules={[Pagination]}
+                        spaceBetween={16}
+                        
+                        pagination={{ clickable: true }}
+                        breakpoints={{
+                            0: { slidesPerView: 1 },
+                            640: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 },
+                        }}
+                        style={{ paddingBottom: "40px"
+                        
+                         }}
+                    >
+                        {slides.map((slide, index) => (
+                            <SwiperSlide key={slide.id}>
+                                {/* Fixed height container — image cropped to fill */}
                                 <div
-                                    className="h-[280px] bg-cover bg-center"
-                                    style={{ backgroundImage: `url(${card.image})` }}
-                                ></div>
-
-                                {/* Content */}
-                                {/*<div className="flex-1 p-6 flex flex-col justify-between">*/}
-                                {/*    <div>*/}
-                                {/*        <h3 className="text-xl font-semibold mb-3">*/}
-                                {/*            {card.title}*/}
-                                {/*        </h3>*/}
-                                {/*        <p className="text-gray-600 text-sm">*/}
-                                {/*            {card.desc}*/}
-                                {/*        </p>*/}
-                                {/*    </div>*/}
-
-                                {/*    <button className="mt-6 bg-black text-white py-2 px-4 rounded-lg text-sm hover:bg-gray-800 transition">*/}
-                                {/*        Learn More*/}
-                                {/*    </button>*/}
-                                {/*</div>*/}
-
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-
+                                    className="h-55 rounded-xl overflow-hidden cursor-pointer group"
+                                    onClick={() => setSelectedIndex(index)}
+                                >
+                                    <img
+                                        src={slide.image}
+                                        alt={slide.alt}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </div>
+
+            {/* ── Lightbox overlay ── */}
+            {selectedIndex !== null && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+                    onClick={() => setSelectedIndex(null)}
+                >
+                    {/* Panel — stop clicks bubbling to backdrop */}
+                    <div
+                        className="relative w-full max-w-6xl px-4"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Close button */}
+                        <button
+                            onClick={() => setSelectedIndex(null)}
+                            className="absolute -top-10 right-4 z-10 text-white/70 hover:text-white text-3xl font-light transition-colors"
+                            aria-label="Close"
+                        >
+                            ✕
+                        </button>
+
+                        {/* ── Lightbox Swiper ── */}
+                        <Swiper
+                            modules={[Pagination, Navigation, Keyboard]}
+                            initialSlide={selectedIndex}
+                            spaceBetween={16}
+                            slidesPerView={1}
+                            navigation
+                            pagination={{ clickable: true }}
+                            keyboard={{ enabled: true }}
+                            className="lightbox-swiper"
+                        >
+                            {slides.map((slide) => (
+                                <SwiperSlide key={slide.id}>
+                                    <div className="flex items-center justify-center h-[80vh]">
+                                        <img
+                                            src={slide.image}
+                                            alt={slide.alt}
+                                            className="max-w-full max-h-full object-contain rounded-xl"
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+            )}
+
+            {/* Lightbox swiper arrow + dot colours */}
+    
         </section>
     );
 }
-
-export default CardSlider;
