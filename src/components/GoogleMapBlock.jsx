@@ -23,10 +23,9 @@ function GoogleMapBlock() {
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script", 
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        // If you add search later: libraries: ["places"],
+        
     });
 
-    // Beautiful, minimal UI; fallback dark style if you don't use Cloud Map Styling
     const mapOptions = useMemo(
         () => (mapObject),
         []

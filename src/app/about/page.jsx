@@ -1,35 +1,8 @@
 import SectionHero from "@/components/SectionHero";
-{/*import ThreeCardSlider from "@/components/Three-Card-Slider";*/}
+import ThreeCardSlider from "@/components/Three-Card-Slider";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
-
-{/*const gallerySlides = [
-    {
-        id: 1,
-        image: "/images/CardImages/p4_makariguard_04.png", alt: ""
-    },
-    {
-        id: 2,
-        image: "/images/CardImages/p4_makariguard_05.png", alt: ""
-    },
-    {
-        id: 3,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-    {
-        id: 4,
-        image: "/images/CardImages/p4_makariguard_09.png", alt: ""
-    },
-    {
-        id: 5,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-    {
-        id: 6,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-
-];*/}
+import { gallerySlides } from "@/data/homeData";
 
 
 const AboutPage = () => {
@@ -39,7 +12,7 @@ const AboutPage = () => {
         <><SectionHero title="About Us" backgroundImage="/images/CardImages/p4_makariguard_14.png" />
 
 
-            <div className="w-full bg-zinc-100 pt-10 py-6 md:py-10">
+            <div className="w-full bg-zinc-50 pt-10 py-6 md:py-10">
                 <FadeIn>
                 <div className="flex flex-col lg:flex-row pt-0 justify-center items-center md:pl-2">
                     
@@ -72,7 +45,7 @@ const AboutPage = () => {
                     </FadeIn>
 
                 <FadeIn>
-                <div className="flex flex-col lg:flex-row pt-10 justify-center items-center md:pr-2 bg-zinc-100">
+                <div className="flex flex-col lg:flex-row pt-10 justify-center items-center md:pr-2 bg-zinc-50">
                     
                     <div className="flex-1 font-[Poppins] justify-center items-center max-w-xl mx-10 bg-blue-300 p-6 mb-10 md:px-5 rounded-2xl w-[350px] md:w-full">
                         <Image
@@ -98,11 +71,9 @@ const AboutPage = () => {
                 
                 </div>
                  </FadeIn>
-                {/*<div className="w-[90%] mx-auto">
+                <div className="w-[90%] mx-auto">
                     {<ThreeCardSlider slides={gallerySlides} />}
                 </div>
-                <div className="w-[90%] mx-auto">
-                </div>*/}
             </div></>
     )
 

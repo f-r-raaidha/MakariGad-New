@@ -48,7 +48,7 @@ function ContactInfoBlock() {
 
                         <div className="text-black space-y-1">
                             <p>Nepal: +977 985 127 5188</p>
-                            <p>&nbsp;     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       &nbsp;&nbsp;&nbsp;&nbsp;              +977 984 138 7846</p>
+                            <p>&nbsp;     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       &nbsp;&nbsp;&nbsp;              +977 984 138 7846</p>
                             <p>Sri Lanka: +94 112 695 007</p>
                         </div>
                     </motion.div>
