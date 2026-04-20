@@ -1,8 +1,9 @@
 import React from "react";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
-import ThreeCardSlider from "@/components/Three-Card-Slider";
 import HomeGradient from "../components/HomeGradient";
-import { gallerySlides, heroSlides, stats, harmonyCards } from "@/data/homeData";
+import StockSticker from "@/components/StockSticker";
+import { heroSlides, stats, harmonyCards } from "@/data/homeData";
+import FadeIn from "@/components/FadeIn";
 
 export default function HomePage() {
     return (
@@ -12,10 +13,13 @@ export default function HomePage() {
                 <HomeHeroSlider slides={heroSlides} />
             </div>
                 <HomeGradient stats={stats} harmonyCards={harmonyCards} />
+             <FadeIn>
             <div className="w-[90%] mx-auto">
-                {<ThreeCardSlider slides={gallerySlides} />}
+               
+                <StockSticker></StockSticker>
                 
             </div>
+            </FadeIn>
         </div>
         
     );
