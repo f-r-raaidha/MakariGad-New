@@ -13,7 +13,7 @@ import {
 import {mapObject} from "@/helpers/googleMapOptions";
 
 // Center: your original coordinates (Kathmandu)
-const CENTER = { lat: 27.7390956, lng: 85.3366778 };
+const CENTER = { lat: 27.73933774359107, lng: 85.33673144417855}; 
 
 // Map container fills its parent; keep your wrapper height (e.g., min-h-[520px])
 const containerStyle = { width: "100%", height: "100%" };
@@ -21,12 +21,11 @@ const containerStyle = { width: "100%", height: "100%" };
 function GoogleMapBlock() {
 
     const { isLoaded } = useJsApiLoader({
-        id: "google-map-script",
+        id: "google-map-script", 
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        // If you add search later: libraries: ["places"],
+        
     });
 
-    // Beautiful, minimal UI; fallback dark style if you don't use Cloud Map Styling
     const mapOptions = useMemo(
         () => (mapObject),
         []
@@ -59,11 +58,19 @@ function GoogleMapBlock() {
                 />
                 {infoOpen && (
                     <InfoWindowF position={CENTER} onCloseClick={() => setInfoOpen(false)}>
-                        <div className="text-sm leading-snug">
+                        <div className="pr-6">
+                            <a href={`https://www.google.com/maps/search/?api=1&query=Makari+Gad+Hydro+Power+Co.+Kathmandu`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm leading-snug font-[Poppins] hover:underline cursor-pointer">
+                            
                             <strong>Makari Gad Hydro Power Co.</strong>
                             <br />
                             Kathmandu, Nepal
+                        </a>
+
                         </div>
+                        
                     </InfoWindowF>
                 )}
             </GoogleMap>

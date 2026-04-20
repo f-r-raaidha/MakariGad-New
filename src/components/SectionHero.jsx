@@ -18,7 +18,7 @@
 export default function SectionHero({ title, backgroundImage, overlayOpacity = 30 }) {
   return (
     <section
-      className="relative w-full h-[400px] overflow-hidden"
+      className="relative w-full h-[500px] overflow-hidden"
       aria-label={title}
     >
       {/* ── Background image — fills full screen width ── */}

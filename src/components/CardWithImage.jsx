@@ -15,7 +15,7 @@ import {
  */
 export function HorizontalCard({ item }) {
   return (
-    <Card className="w-full max-w-5xl flex flex-col md:flex-row px-6 pr-6 p-0 pb-6  cursor-pointer hover:shadow-lg transition-shadow duration-300 bg-zinc-100">
+    <Card className="w-full max-w-5xl flex flex-col md:flex-row  p-0 pb-6 px-6 md:pt-3 cursor-pointer hover:shadow-lg transition-shadow duration-300 bg-zinc-100">
       {/* ── Left: Text content ── */}
       <CardBody className="flex flex-col justify-center pr-6">
         <Typography variant="" color="" className="text-2xl mb-2 font-[Poppins] justify-center text-sky-600 font-semibold">

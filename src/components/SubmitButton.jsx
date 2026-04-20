@@ -13,11 +13,7 @@ export function SubmitButton() {
                 disabled={pending}
                 whileTap={{ scale: 0.97 }}
                 whileHover={!pending ? { scale: 1.02 } : {}}
-                className="w-full relative flex items-center justify-center gap-2
-                bg-gradient-to-r from-sky-500 to-blue-600
-                text-white px-6 py-3 rounded-lg font-semibold
-                transition-all duration-300
-                disabled:opacity-60 disabled:cursor-not-allowed overflow-hidden"
+                className="w-full relative flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed overflow-hidden"
             >
                 {/* Spinner */}
                 {pending && (

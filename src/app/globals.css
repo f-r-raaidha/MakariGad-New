@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 /*@import "tailwindcss/base";*/
 /*@import "tailwindcss/components";*/
@@ -26,79 +25,143 @@ body {
 
 /* Global Typography (Tailwind v4 style) */
 @layer base {
+
     /* Headings → Montserrat */
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: var(--font-heading);
     }
 
     /* Body → Poppins */
-    body, a, span, li {
+    body,
+    a,
+    span,
+    li {
         font-family: var(--font-body);
     }
 
-    p{
+    p {
         font-family: var(--font-links);
     }
 
-    a{
+    a {
         text-decoration: none;
     }
 
     /* Optional sizing & rhythm */
     /*TODO Common Styles for Heading */
-    h1 { @apply text-4xl md:text-5xl font-bold leading-tight; }
-    h2 { @apply my-4 text-3xl md:text-4xl font-semibold text-[#0A7DBA]; }
-    h3 { @apply text-2xl font-semibold; }
-    h4 { @apply text-xl font-medium; }
-    h5 { @apply text-lg font-medium; }
-    h6 { @apply text-base font-medium; }
+    h1 {
+        @apply text-4xl md:text-5xl font-bold leading-tight;
+    }
 
-    p  { @apply text-base leading-7 text-gray-800; }
-    a  { @apply text-base text-blue-600 no-underline underline-offset-2  hover:text-blue-700; }
+    h2 {
+        @apply my-4 text-3xl md:text-4xl font-semibold text-[#0A7DBA];
+    }
+
+    h3 {
+        @apply text-2xl font-semibold;
+    }
+
+    h4 {
+        @apply text-xl font-medium;
+    }
+
+    h5 {
+        @apply text-lg font-medium;
+    }
+
+    h6 {
+        @apply text-base font-medium;
+    }
+
+    p {
+        @apply text-base leading-7 text-gray-800;
+    }
+
+    a {
+        @apply text-base text-blue-600 no-underline underline-offset-2 hover:text-blue-700;
+    }
 }
 
 
 /*Overriding Default Styling in Swiper*/
+.three-card-slider .thumbnail-swiper .swiper-button-prev {
+    left: 0px;
 
-.three-card-slider .swiper-pagination-bullet {
-    background-color: rgb(220, 52, 144);
-    /* background-color: #C4C4C4;*/
 }
 
-.three-card-slider .swiper-pagination-bullet-active {
-    background-color: #000;
+.three-card-slider .thumbnail-swiper .swiper-button-next {
+    right: 0px;
 }
+
+.three-card-slider .thumbnail-swiper .swiper-button-prev,
+.three-card-slide .thumbnail-swiper .swiper-button-next {
+    color: #e90e20;
+}
+
+.three-card-slide .thumbnail-swiper .swiper-pagination-bullet {
+    background: #0ea5e9;
+    opacity: 0.4;
+}
+
+.three-card-slide .thumbnail-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.three-card-slide .lightbox-swiper .swiper-button-next,
+.three-card-slide .lightbox-swiper .swiper-button-prev {
+    color: #ffffff;
+}
+
+.three-card-slide .lightbox-swiper .swiper-pagination-bullet {
+    background: #ffffff;
+    opacity: 0.6;
+}
+
+.three-card-slide .lightbox-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.three-card-slide .lightbox-swiper {
+    padding-bottom: 40px;
+}
+
+
+
 /*Swiper Navigation Styling*/
 .hero-slider .swiper-button-next,
 .hero-slider .swiper-button-prev {
-  width: 56px;             /* Bigger circle */
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;           /* arrow color */
-  top: auto;        /* arrow size */
-  left: auto;
-  right: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* arrow color */
+    top: auto;
+    left: auto;
+    right: 20px;
 }
+
 .hero-slider .swiper-button-prev {
-  bottom: calc(50% + 52px);   /* above center */
+    bottom: calc(50% + 52px);
+    /* above center */
 }
 
 .hero-slider .swiper-button-next {
-  bottom: calc(50% - 4px);    /* below center */
+    bottom: calc(50% - 4px);
+    /* below center */
 }
 
 /* Fix arrow size — arrow is ::after pseudo-element */
 .hero-slider .swiper-button-next::after,
 .hero-slider .swiper-button-prev::after {
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
 }
-
-
-
-
-

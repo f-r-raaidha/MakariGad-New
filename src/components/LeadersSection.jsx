@@ -50,12 +50,13 @@ export default function LeadersSection({ leaders = [], title = "Meet Our Leaders
 
   return (
     <section className="w-full bg-white py-16 px-6">
+      
       <div className="max-w-[900px] mx-auto flex flex-col items-center gap-10">
 
-        {/* ── Section heading ── */}
+      {/*  {/* ── Section heading ── 
         <h2 className="text-center text-sky-500 text-3xl font-bold font-['Poppins']">
           {title}
-        </h2>
+        </h2>*/}
 
         {/* ── Cards grid — 3 columns, wraps to 2 or 1 on smaller screens ── */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -123,6 +124,7 @@ export default function LeadersSection({ leaders = [], title = "Meet Our Leaders
           to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>
+      
     </section>
   );
 }

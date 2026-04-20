@@ -1,24 +1,27 @@
 import React from "react";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
-import ThreeCardSlider from "@/components/Three-Card-Slider";
-import IntroTextWithDescription from "@/components/IntroTextWithDescription";
 import HomeGradient from "../components/HomeGradient";
-
-// border-2 caret-amber-100 bg-zinc-50
+import StockSticker from "@/components/StockSticker";
+import { heroSlides, stats, harmonyCards } from "@/data/homeData";
+import FadeIn from "@/components/FadeIn";
 
 export default function HomePage() {
     return (
-        <div className="home-page w-[90%] mx-auto font-sans ">
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <HomeHeroSlider/>
-            <IntroTextWithDescription/>
-            <HomeGradient/>
-            {<ThreeCardSlider/>}
+        <div className="font-sans">
+            <div className="w-[90%] mx-auto font-sans pt-30">
+
+                <HomeHeroSlider slides={heroSlides} />
+            </div>
+                <HomeGradient stats={stats} harmonyCards={harmonyCards} />
+             <FadeIn>
+            <div className="w-[90%] mx-auto">
+               
+                <StockSticker></StockSticker>
+                
+            </div>
+            </FadeIn>
         </div>
+        
     );
 }
 
