@@ -1,41 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import {
-    GoogleMap,
-    MarkerF,
-    InfoWindowF,
-    useJsApiLoader,
-} from "@react-google-maps/api";
+import { APIProvider, Map, AdvancedMarker, InfoWindow } from "@vis.gl/react-google-maps";
+import { pre } from "framer-motion/client";
 
-// Google Map Options
-import {mapObject} from "@/helpers/googleMapOptions";
-
-// Center: your original coordinates (Kathmandu)
-const CENTER = { lat: 27.73933774359107, lng: 85.33673144417855}; 
-
-// Map container fills its parent; keep your wrapper height (e.g., min-h-[520px])
-const containerStyle = { width: "100%", height: "100%" };
+const CENTER = { lat: 27.73933774359107, lng: 85.33673144417855 };
 
 function GoogleMapBlock() {
-
-    const { isLoaded } = useJsApiLoader({
-        id: "google-map-script", 
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        
-    });
-
-    const mapOptions = useMemo(
-        () => (mapObject),
-        []
-    );
-
     const [infoOpen, setInfoOpen] = useState(true);
-
-    if (!isLoaded) {
-        return <div className="min-h-[520px] rounded-xl bg-gray-100" />;
-    }
 
     return (
         <motion.div
@@ -45,37 +18,42 @@ function GoogleMapBlock() {
             className="w-full h-full min-h-[520px] rounded-xl overflow-hidden"
             aria-label="Google Map"
         >
-            <GoogleMap
-                center={CENTER}
-                zoom={18}
-                options={mapOptions}
-                mapContainerStyle={containerStyle}
-            >
-                <MarkerF
-                    position={CENTER}
-                    title="Makari Gad Hydro Power Co."
-                    onClick={() => setInfoOpen(true)}
-                />
-                {infoOpen && (
-                    <InfoWindowF position={CENTER} onCloseClick={() => setInfoOpen(false)}>
-                        <div className="pr-6">
-                            <a href={`https://www.google.com/maps/search/?api=1&query=Makari+Gad+Hydro+Power+Co.+Kathmandu`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm leading-snug font-[Poppins] hover:underline cursor-pointer">
-                            
-                            <strong>Makari Gad Hydro Power Co.</strong>
-                            <br />
-                            Kathmandu, Nepal
-                        </a>
+            <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+                <Map
+                    defaultCenter={CENTER}
+                    defaultZoom={18}
+                    style={{ width: "100%", height: "100%" }}
+                    mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
+                >
+                    <AdvancedMarker
+                        position={CENTER}
+                        title="Makari Gad Hydro Power Co."
+                        onClick={() => setInfoOpen(prev => !prev)}
+                    />
 
-                        </div>
-                        
-                    </InfoWindowF>
-                )}
-            </GoogleMap>
+                    {infoOpen && (
+                        <InfoWindow
+                            position={CENTER}
+                            onCloseClick={() => setInfoOpen(false)}
+                        >
+                            <div className="pr-6"><a
+                                
+                                    href="https://www.google.com/maps/search/?api=1&query=Makari+Gad+Hydro+Power+Co.+Kathmandu"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm leading-snug font-[Poppins] hover:underline cursor-pointer"
+                                >
+                                    <strong>Makari Gad Hydro Power Co.</strong>
+                                    <br />
+                                    Kathmandu, Nepal
+                                </a>
+                            </div>
+                        </InfoWindow>
+                    )}
+                </Map>
+            </APIProvider>
         </motion.div>
     );
 }
 
-export default GoogleMapBlock
+export default GoogleMapBlock;

@@ -1,5 +1,3 @@
-"use client";
-
 const currentYear = new Date().getFullYear();
 
 const SITE_MAP = [

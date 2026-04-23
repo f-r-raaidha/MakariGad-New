@@ -1,15 +1,3 @@
-"use client"
-
-/**
- * LeaderCard
- *
- * Single card — gradient background, photo, name, role.
- * Clicking anywhere on the card fires onSelect(leader).
- *
- * Props:
- *   leader    {object}  — { id, name, role, image, bio }
- *   onSelect  {func}    — called with the leader object when clicked
- */
 export default function LeaderCard({ leader, onSelect }) {
   return (
     <div

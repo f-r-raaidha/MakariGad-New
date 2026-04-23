@@ -1,6 +1,3 @@
-"use client";
-
-import React from 'react';
 import GoogleMapBlock from "@/components/GoogleMapBlock";
 import ContactForm from "@/components/ContactForm";
 

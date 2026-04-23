@@ -7,7 +7,7 @@ const articles = [
         id: 1,
         title: "Plant Operations & Power Transmission",
         description: "Water is diverted from the Makari River at an intake located about 900 m above the powerhouse, then passes through desilting and forebay tanks before entering the 3.5 km penstock that drives the turbines. \n \n Electricity generated at the powerhouse is transmitted via a 27 km, 33 kV line to the Balanch Substation, where it is connected to the Nepal National Grid through a 132 kV transmission line.",
-        image: "images/CardImages/p4_makariguard_10.png",
+        image: "images/GalleryImages/p4_makariguard_10.jpg",
     }
 ];
 
@@ -109,7 +109,7 @@ const OperationPage = () => {
                             </p>
                         </div>
                         
-                        <Image src="/images/CardImages/p4_makariguard_10.png" width={300} height={300} alt="" className="h-48 w-full md:h-60 object-cover rounded-xl " />
+                        <Image src="/images/GalleryImages/p4_makariguard_11.jpg" width={300} height={300} alt="" className="h-48 w-full md:h-60 object-cover rounded-xl " />
                     </div>
                     
                     
@@ -130,7 +130,7 @@ const OperationPage = () => {
                         </p>
                         </div>
                         <div className="w-auto md:w-1/2 shrink-0 rounded-xl">
-                        <Image src="/images/CardImages/p4_makariguard_10.png" width={300} height={300} alt="" className="h-48 w-full md:h-70 object-cover rounded-xl " />
+                        <Image src="/images/GalleryImages/p4_makariguard_12.jpg" width={300} height={300} alt="" className="h-48 w-full md:h-70 object-cover rounded-xl " />
 
                         </div>
                     </div>

@@ -161,8 +161,8 @@ function ContactForm() {
                 >
 
                         <textarea
-                            name="email"
-                            row={5}
+                            name="message"
+                            rows={5}
                             defaultValue={formState?.values?.message}
                             placeholder="Your Message"
                             className={`w-full border p-3 rounded-lg transition-all duration-300 

@@ -2,14 +2,15 @@ import SectionHero from "@/components/SectionHero";
 import ThreeCardSlider from "@/components/Three-Card-Slider";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
-import { gallerySlides } from "@/data/homeData";
+import { getGalleryImages } from "@/lib/getGalleryImages";
 
 
 const AboutPage = () => {
 
+    const gallerySlides = getGalleryImages();
 
     return (
-        <><SectionHero title="About Us" backgroundImage="/images/CardImages/p4_makariguard_14.png" />
+        <><SectionHero title="About Us" backgroundImage="/images/GalleryImages/p4_makariguard_14.jpg" />
 
 
             <div className="w-full bg-zinc-50 pt-10 py-6 md:py-10">
@@ -25,7 +26,7 @@ const AboutPage = () => {
                     </div>
                     <div className="flex-1 font-[Poppins] justify-center items-center max-w-xl mx-10 bg-blue-300 p-6 mb-10 md:px-5 rounded-2xl w-[350px] md:w-full">
                         <Image
-                            src="/images/CardImages/p4_makariguard_19.png"
+                            src="/images/GalleryImages/p4_makariguard_19.jpg"
                             alt=""
                             width={0}
                             height={0}
@@ -49,7 +50,7 @@ const AboutPage = () => {
                     
                     <div className="flex-1 font-[Poppins] justify-center items-center max-w-xl mx-10 bg-blue-300 p-6 mb-10 md:px-5 rounded-2xl w-[350px] md:w-full">
                         <Image
-                            src="/images/CardImages/p4_makariguard_19.png"
+                            src="/images/GalleryImages/p4_makariguard_20.jpg"
                             alt=""
                             width={0}
                             height={0}

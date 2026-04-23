@@ -1,55 +1,27 @@
-export const gallerySlides = [
-    {
-        id: 1,
-        image: "/images/CardImages/p4_makariguard_04.png", alt: ""
-    },
-    {
-        id: 2,
-        image: "/images/CardImages/p4_makariguard_05.png", alt: ""
-    },
-    {
-        id: 3,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-    {
-        id: 4,
-        image: "/images/CardImages/p4_makariguard_09.png", alt: ""
-    },
-    {
-        id: 5,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-    {
-        id: 6,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-
-];
-
 export const heroSlides = [
     {
         id: 1,
-        image: "/images/CardImages/p4_makariguard_05.png",
+        image: "/images/GalleryImages/p4_makariguard_05.jpg",
         title: "Powering a Cleaner Future",
         description: "Harnessing the force of flowing water to deliver clean, renewable energy for generations to come.",
     },
     {
         id: 2,
-        image: "/images/CardImages/p4_makariguard_10.png",
+        image: "/images/GalleryImages/p4_makariguard_10.jpg",
         title: "Engineering with Purpose",
         description: "Built on advanced hydropower technology, reflecting a strong commitment to innovation, efficiency and sustainability",
     },
     {
         id: 3,
-        image: "/images/CardImages/p4_makariguard_04.png",
+        image: "/images/GalleryImages/p4_makariguard_04.jpg",
         title: "Among Asia's Highest-Head Hydropower Projects",
         description: "Makari Gad stands out as one of the highest-head hydropower plants in the region - engineered under some of the most challenging terrain and conditions.",
     },
     {
         id: 4,
-        image: "/images/CardImages/p4_makariguard_37.png",
+        image: "/images/GalleryImages/p4_makariguard_37.jpg",
         title: "Energy that Creates Lasting Impact",
-        description: "From environmental stewardship to community development, Makari Gasd delivers power that supports people, progess and the planet.",
+        description: "From environmental stewardship to community development, Makari Gad delivers power that supports people, progess and the planet.",
     },
 ];
 

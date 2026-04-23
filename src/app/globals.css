@@ -89,44 +89,61 @@ body {
 
 
 /*Overriding Default Styling in Swiper*/
-.three-card-slider .thumbnail-swiper .swiper-button-prev {
-    left: 0px;
-
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #0ea5e9;
 }
 
-.three-card-slider .thumbnail-swiper .swiper-button-next {
-    right: 0px;
+.swiper-button-prev-custom::after {
+    content: "‹";
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.three-card-slider .thumbnail-swiper .swiper-button-prev,
-.three-card-slide .thumbnail-swiper .swiper-button-next {
-    color: #e90e20;
+.swiper-button-next-custom::after {
+    content: "›";
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.three-card-slide .thumbnail-swiper .swiper-pagination-bullet {
+/* Dimmed state when at beginning/end */
+.swiper-button-prev-custom.swiper-button-disabled,
+.swiper-button-next-custom.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+
+.thumbnail-swiper .swiper-pagination-bullet {
     background: #0ea5e9;
     opacity: 0.4;
 }
 
-.three-card-slide .thumbnail-swiper .swiper-pagination-bullet-active {
+.thumbnail-swiper .swiper-pagination-bullet-active {
     opacity: 1;
 }
 
-.three-card-slide .lightbox-swiper .swiper-button-next,
-.three-card-slide .lightbox-swiper .swiper-button-prev {
+.lightbox-swiper .swiper-button-next,
+.lightbox-swiper .swiper-button-prev {
     color: #ffffff;
 }
 
-.three-card-slide .lightbox-swiper .swiper-pagination-bullet {
+.lightbox-swiper .swiper-pagination-bullet {
     background: #ffffff;
     opacity: 0.6;
 }
 
-.three-card-slide .lightbox-swiper .swiper-pagination-bullet-active {
+.lightbox-swiper .swiper-pagination-bullet-active {
     opacity: 1;
 }
 
-.three-card-slide .lightbox-swiper {
+.lightbox-swiper {
     padding-bottom: 40px;
 }
 

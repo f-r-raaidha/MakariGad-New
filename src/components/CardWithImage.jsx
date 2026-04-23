@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Card,
   CardHeader,
@@ -6,13 +7,6 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-/**
- * HorizontalCard
- *
- * Props:
- *   item      {object}  — { id, category, title, description, image }
- *   onSelect  {func}    — called with the item object when clicked
- */
 export function HorizontalCard({ item }) {
   return (
     <Card className="w-full max-w-5xl flex flex-col md:flex-row  p-0 pb-6 px-6 md:pt-3 cursor-pointer hover:shadow-lg transition-shadow duration-300 bg-zinc-100">

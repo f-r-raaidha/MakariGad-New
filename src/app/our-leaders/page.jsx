@@ -3,8 +3,6 @@ import LeadersSection from "@/components/LeadersSection";
 import { leaders } from "@/data/leadersData";
 
 
-
-
 const ourLeaders = () => {
 
     return (
