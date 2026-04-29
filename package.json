@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/geist-sans": "^5.2.5",
     "@fontsource/poppins": "^5.2.7",
+    "@hcaptcha/react-hcaptcha": "^2.0.2",
     "@material-tailwind/react": "^2.1.10",
     "@vis.gl/react-google-maps": "^1.8.3",
     "axios": "^1.13.6",

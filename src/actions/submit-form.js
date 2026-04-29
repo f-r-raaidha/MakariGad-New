@@ -1,6 +1,6 @@
 "use server"
 
-import { z } from "zod";
+import { success, z } from "zod";
 import nodemailer from "nodemailer";
 
 const createTopicSchema = z.object({
@@ -28,6 +28,29 @@ const createTopicSchema = z.object({
         .min(10, "Message must be at least 10 characters")
         .max(1000, "Message is too long"),
 });
+
+async function verifyCaptcha(token) {
+    if (!token) return false;
+
+    const res = await fetch("https://api.hcaptcha.com/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({
+            secret: process.env.HCAPTCHA_SECRET_KEY,
+            response: token,
+            sitekey: process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
+        }),
+    });
+
+    const data = await res.json();
+
+    if (!data.success){
+        console.warn("hCaptcha failed: ", data["error-codes"]);
+    }
+
+    return data.success === true;
+    
+}
 
 function escapeHtml(str) {
     return str
@@ -64,6 +87,19 @@ export const handleSubmit = async (formState, formData) => {
         email: formData.get("email"),
         message: formData.get("message"),
     };
+
+    const captchaToken = formData.get("captchaToken");
+    const captchaValid = await verifyCaptcha(captchaToken);
+
+    if (!captchaValid) {
+        return {
+            success: false,
+            values,
+            errors: {
+                _captcha: ["Captcha verification failed. Please try again."],
+            },
+        };
+    }
 
     const result = createTopicSchema.safeParse(values);
 

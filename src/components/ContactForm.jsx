@@ -5,17 +5,14 @@ import {useFormStatus} from 'react-dom';
 // import { submitContact } from '@/actions/actions'; // make sure this path is correct
 import {motion} from 'framer-motion';
 import * as actions from "@/actions";
-import {useActionState} from "react";
+import {useActionState, useRef, useState, useEffect} from "react";
 import {SubmitButton} from "@/components/SubmitButton";
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { GiToken } from 'react-icons/gi';
 
 
 // Initial state object
-const initialState = {
-    success: false,
-    message: undefined,
-    errors: {},
-    values: {},
-};
+
 
 
 const errorAnimation = {
@@ -44,8 +41,33 @@ function ContactForm() {
         firstName: "",
         lastName: "",
         email: "",
-        message: ""
-    })
+        message: "",
+        errors: {},
+        values: {},
+        success: false,
+    });
+
+
+    //captcha
+    const [captchaToken, setcaptchaToken] = useState(null);
+    const captchaRef = useRef(null);
+
+    //reset captcha after successful submission
+    useEffect(() => {
+        if(formState.success){
+            setcaptchaToken(null);
+            captchaRef.current?.resetCaptcha();
+        }
+    }, [formState.success]);
+    
+    //reset after captcha error
+    useEffect(() => {
+        if (formState.errors?._captcha) {
+            setcaptchaToken(null);
+            captchaRef.current?.resetCaptcha();
+        }
+    }, [formState.errors?._captcha]);
+
 
     console.log("Form State ", formState)
 
@@ -64,6 +86,8 @@ function ContactForm() {
             </p>
 
             <form action={action} className="space-y-6">
+
+                <input type='hidden' name='captchaToken' value={captchaToken || ""}/>
 
                 <div className="grid md:grid-cols-2 gap-4">
 
@@ -182,8 +206,26 @@ function ContactForm() {
 
                 </motion.div>
 
+                <HCaptcha
+                    sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY}
+                    onVerify={(token) => setcaptchaToken(token)}
+                    onExpire={() => setcaptchaToken(null)}
+                    onError={() => setcaptchaToken(null)}
+                    ref={captchaRef}
+                />
 
-                <SubmitButton/>
+                {formState.errors?._captcha && (
+                   <motion.p variants={errorAnimation} initial="hidden" animate="visible" className='text-red-500 text-sm'>
+                    {formState.errors._captcha[0]}
+                   </motion.p>
+                )}
+
+
+                <SubmitButton disabled={!captchaToken} />
+
+                {formState.errors?._form && (
+                    <p className="text-red-500 text-sm">{formState.errors._form[0]}</p>
+                )}
 
                 {formState.success && (
                     <p className="text-green-600 mt-2">
