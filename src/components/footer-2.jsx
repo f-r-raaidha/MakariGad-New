@@ -1,5 +1,3 @@
-"use client";
-
 const currentYear = new Date().getFullYear();
 
 const SITE_MAP = [
@@ -20,6 +18,7 @@ export function FooterWithSocialLinks() {
 
           {/* Col 1: Logo + Social Icons */}
           <div className="flex flex-col gap-6">
+            
             <img src="/logo.svg" alt="Company Logo" className="w-28" />
             <div className="flex items-center gap-4 text-gray-700">
               {/* Facebook }

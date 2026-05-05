@@ -7,7 +7,7 @@ const ContactPage = () => {
     return (
 
         <div className="">
-            <SectionHero title="About Us" backgroundImage="/images/CardImages/p4_makariguard_14.png" />
+            <SectionHero title="Contact Us" backgroundImage="/images/StockImage/pexels-sora-shimazaki-5668838.jpg" />
             <div></div>
 
             <div className=" min-h-screen w-[90%] mx-auto pb-30 justify-center items-center">

@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Card,
   CardHeader,
@@ -6,13 +7,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-/**
- * HorizontalCard
- *
- * Props:
- *   item      {object}  — { id, category, title, description, image }
- *   onSelect  {func}    — called with the item object when clicked
- */
+import Image from "next/image";
+
 export function HorizontalCard({ item }) {
   return (
     <Card className="w-full max-w-5xl flex flex-col md:flex-row  p-0 pb-6 px-6 md:pt-3 cursor-pointer hover:shadow-lg transition-shadow duration-300 bg-zinc-100">
@@ -32,11 +28,16 @@ export function HorizontalCard({ item }) {
         floated={false}
         className="w-auto md:w-1/2 shrink-0 rounded-xl"
       >
-        <img
-          src={item.image}
-          alt={item.title}
-          className="h-48 w-full md:h-80 object-cover rounded-xl"
-        />
+        <div className="relative h-48 md:h-80 w-full">
+          <Image
+        src={item.image}
+        alt={item.title}
+        className="object-cover rounded-xl"
+        fill
+        />       
+        </div>
+        
+        
       </CardHeader>
     </Card>
   );

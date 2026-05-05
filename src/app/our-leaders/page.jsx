@@ -3,12 +3,10 @@ import LeadersSection from "@/components/LeadersSection";
 import { leaders } from "@/data/leadersData";
 
 
-
-
 const ourLeaders = () => {
 
     return (
-        <><SectionHero title="Our Leaders" backgroundImage="images/SectionHeroImages/p4_makariguard_45-3.png" />
+        <><SectionHero title="Our Leaders" backgroundImage="images/StockImage/pexels-rdne-7581119.jpg" />
          <LeadersSection leaders={leaders} title="" />
          
         <div className="container">

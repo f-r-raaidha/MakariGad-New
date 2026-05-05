@@ -1,19 +1,7 @@
 "use server"
 
-import axios from "axios";
-import {z} from "zod";
-import {redirect} from "next/navigation";
-// import {connectDB} from "@/lib/helpers";
-// import prisma from "../../../prisma";
-import {revalidatePath} from "next/cache";
-
-// TODO Created Schema
-// const createTopicSchema = z.object({
-//     firstName: z.string().min(3).regex(/[a-z-]/, {message: "Must Be Lowercase or With Dashes"}),
-//     lastName: z.string().min(3).regex(/[a-z-]/, {message: "Must Be Lowercase or With Dashes"}),
-//     email: z.string().min(3).regex(/[a-z-]/, {message: "Must Be Lowercase or With Dashes"}),
-//     message: z.string().min(10)
-// })
+import { success, z } from "zod";
+import nodemailer from "nodemailer";
 
 const createTopicSchema = z.object({
     firstName: z
@@ -22,21 +10,18 @@ const createTopicSchema = z.object({
         .min(2, "First name must be at least 2 characters")
         .max(50, "First name is too long")
         .regex(/^[a-zA-Z\s'-]+$/, "Only letters, spaces, hyphens, and apostrophes allowed"),
-
     lastName: z
         .string()
         .trim()
         .min(2, "Last name must be at least 2 characters")
         .max(50, "Last name is too long")
         .regex(/^[a-zA-Z\s'-]+$/, "Only letters, spaces, hyphens, and apostrophes allowed"),
-
     email: z
         .string()
         .trim()
         .toLowerCase()
         .email("Please enter a valid email address")
         .max(100, "Email is too long"),
-
     message: z
         .string()
         .trim()
@@ -44,77 +29,77 @@ const createTopicSchema = z.object({
         .max(1000, "Message is too long"),
 });
 
-// OLD FORM Validation
-// export  const handleSubmit=async(formformState,formData)=>{
-//
-//     // //     TODO Get Form data
-//     const firstName = formData.get("firstName");
-//     const lastName = formData.get("lastName");
-//     const email = formData.get("email");
-//     const message = formData.get("message");
-//
-//     const currentformState={
-//         firstName,
-//         lastName,
-//         email,
-//         message
-//     };
-//
-//     const result = createTopicSchema.safeParse(
-//         {
-//             firstName: formData.get("firstName"),
-//             lastName: formData.get("lastName"),
-//             email: formData.get("email"),
-//             message: formData.get("message"),
-//         }
-//     )
-//
-//     if (!result.success) {
-//         return {
-//             ...currentformState,
-//             errors: result.error.flatten().fieldErrors
-//         }
-//     }
-//
-//     try {
-//
-//
-//     }catch (e) {
-//
-//         console.log("Error ", e)
-//         if(e instanceof Error) {
-//             return {
-//                 errors: {
-//                     _form:e.message,
-//                 }
-//             }
-//         }else {
-//             return {
-//                 errors: {
-//                     _form:"Something Went Wrong",
-//                 }
-//             }
-//
-//         }
-//
-//     }
-//
-//     revalidatePath("/contact")
-//
-//     // TODO Redirect back to Snippets page
-//     redirect(("/contact"))
-//
-// }
+async function verifyCaptcha(token) {
+    if (!token) return false;
 
+    const res = await fetch("https://api.hcaptcha.com/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded"},
+        body: new URLSearchParams({
+            secret: process.env.HCAPTCHA_SECRET_KEY,
+            response: token,
+            sitekey: process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
+        }),
+    });
+
+    const data = await res.json();
+
+    if (!data.success){
+        console.warn("hCaptcha failed: ", data["error-codes"]);
+    }
+
+    return data.success === true;
+    
+}
+
+function escapeHtml(str) {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+let transporter = null;
+
+function getTransporter() {
+    if (!transporter) {
+        transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: Number(process.env.SMTP_PORT),
+            secure: true,
+            auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
+            },
+            pool: true,
+            maxConnections: 3,
+        });
+    }
+    return transporter;
+}
 
 export const handleSubmit = async (formState, formData) => {
-
     const values = {
         firstName: formData.get("firstName"),
         lastName: formData.get("lastName"),
         email: formData.get("email"),
         message: formData.get("message"),
     };
+
+    const captchaToken = formData.get("captchaToken");
+    const captchaValid = await verifyCaptcha(captchaToken);
+
+    if (!captchaValid) {
+        return {
+            success: false,
+            values,
+            errors: {
+                _captcha: ["Captcha verification failed. Please try again."],
+            },
+        };
+    }
 
     const result = createTopicSchema.safeParse(values);
 
@@ -126,22 +111,34 @@ export const handleSubmit = async (formState, formData) => {
         };
     }
 
+    const { firstName, lastName, email, message } = result.data;
+
     try {
-        // your API / DB logic here
+        await getTransporter().sendMail({
+            from: `"Contact Form" <${process.env.SMTP_USER}>`,
+            to: process.env.CONTACT_RECEIVER_EMAIL,
+            replyTo: email,
+            subject: `New Response from Makarigad Contact Form`,
+            text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nMessage:\n${message}`,
+            html: `
+                <h2>New Contact Form Submission</h2>
+                <p><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
+                <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+                <hr />
+                <p><strong>Message:</strong></p>
+                <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
+            `,
+        });
 
         return {
             success: true,
             message: "Message sent successfully!",
-            values: {
-                firstName: "",
-                lastName: "",
-                email: "",
-                message: "",
-            },
+            values: { firstName: "", lastName: "", email: "", message: "" },
             errors: {},
         };
 
     } catch (e) {
+        console.error("Email error:", e);
         return {
             success: false,
             values,
@@ -151,4 +148,3 @@ export const handleSubmit = async (formState, formData) => {
         };
     }
 };
-

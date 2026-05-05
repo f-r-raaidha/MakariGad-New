@@ -28,8 +28,8 @@ const montserrat = Montserrat({
 
 
 export const metadata = {
-    title: "Makarigad Pvt",
-    description: "Official Website For Makarigad Pvt",
+    title: "Makari Gad Hydro Power",
+    description: "Official Website For Makari Gad  Hydro Power Pvt",
 };
 
 // ${geistSans.variable} ${geistMono.variable}

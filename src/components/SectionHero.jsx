@@ -1,20 +1,3 @@
-"use client";
-
-/**
- * SectionHero
- *
- * A full-width hero banner with a centred title over a background image.
- * No blur overlay — just the title with a soft glow effect around the letters.
- *
- * Usage:
- *   <SectionHero title="Our Leaders" backgroundImage="/images/team-bg.jpg" />
- *   <SectionHero title="Our Mission" backgroundImage="/images/mission-bg.jpg" />
- *
- * Props:
- *   title            {string}  — The heading displayed in the banner (required)
- *   backgroundImage  {string}  — Optional full-bleed background image URL
- *   overlayOpacity   {number}  — Optional dark overlay strength 0–100 (default: 30)
- */
 export default function SectionHero({ title, backgroundImage, overlayOpacity = 30 }) {
   return (
     <section
@@ -24,11 +7,11 @@ export default function SectionHero({ title, backgroundImage, overlayOpacity = 3
       {/* ── Background image — fills full screen width ── */}
       {backgroundImage ? (
         <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-cover bg-top bg-no-repeat"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900" />
+        <div className="absolute inset-0 bg-linear-to-br from-slate-800 via-slate-700 to-slate-900" />
       )}
 
       {/* ── Subtle dark overlay for legibility ── */}

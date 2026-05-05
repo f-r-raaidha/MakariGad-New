@@ -1,14 +1,17 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Keyboard } from "swiper/modules";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export default function ThreeCardSlider({ slides }) {
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     // Close lightbox on Escape
@@ -25,7 +28,9 @@ export default function ThreeCardSlider({ slides }) {
         }
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
-            document.body.style.overflow = "";
+            if (selectedIndex === null) {
+                document.body.style.overflow = "";
+            }
         };
     }, [selectedIndex, handleKeyDown]);
 
@@ -39,32 +44,43 @@ export default function ThreeCardSlider({ slides }) {
 
                 <div className="relative px-10">
                     {/* ── Thumbnail Swiper ── */}
+                    <div className="swiper-button-prev-custom absolute left-0 bottom-2/5 -translate-y-1/2 z-10"/>
+                    <div className="swiper-button-next-custom absolute right-0 bottom-2/5 -translate-y-1/2 z-10"/>
                     <Swiper
-                        modules={[Pagination]}
+                        modules={[Pagination, Navigation]}
                         spaceBetween={16}
-                        
-                        pagination={{ clickable: true }}
+                        navigation={{
+                            prevEl: ".swiper-button-prev-custom",
+                            nextEl: ".swiper-button-next-custom",
+                        }}
+                        pagination={{ clickable: true, dynamicBullets: true }}
                         breakpoints={{
                             0: { slidesPerView: 1 },
                             640: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
                         }}
-                        style={{ paddingBottom: "40px"
-                        
-                         }}
+                        style={{
+                            paddingBottom: "40px"
+
+                        }}
+                        className="thumbnail-swiper"
                     >
                         {slides.map((slide, index) => (
                             <SwiperSlide key={slide.id}>
                                 {/* Fixed height container — image cropped to fill */}
                                 <div
-                                    className="h-55 rounded-xl overflow-hidden cursor-pointer group"
+                                    className="relative h-50 rounded-2xl overflow-hidden cursor-pointer group"
                                     onClick={() => setSelectedIndex(index)}
                                 >
-                                    <img
+                                    <Image
                                         src={slide.image}
                                         alt={slide.alt}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        fill
+                                        className="relative object-cover transition-transform duration-500 group-hover:scale-105 rounded-2xl"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        loading="lazy"
                                     />
+
                                 </div>
                             </SwiperSlide>
                         ))}
@@ -99,17 +115,21 @@ export default function ThreeCardSlider({ slides }) {
                             spaceBetween={16}
                             slidesPerView={1}
                             navigation
-                            pagination={{ clickable: true }}
+                            pagination={{ clickable: true, dynamicBullets: true }}
                             keyboard={{ enabled: true }}
                             className="lightbox-swiper"
                         >
                             {slides.map((slide) => (
                                 <SwiperSlide key={slide.id}>
                                     <div className="flex items-center justify-center h-[80vh]">
-                                        <img
+
+                                        <Image
                                             src={slide.image}
                                             alt={slide.alt}
-                                            className="max-w-full max-h-full object-contain rounded-xl"
+                                            fill
+                                            className="object-contain rounded-xl"
+                                            sizes="100vw"
+                                            priority={slide.id === slides[selectedIndex]?.id}
                                         />
                                     </div>
                                 </SwiperSlide>
@@ -120,7 +140,7 @@ export default function ThreeCardSlider({ slides }) {
             )}
 
             {/* Lightbox swiper arrow + dot colours */}
-    
+
         </section>
     );
 }

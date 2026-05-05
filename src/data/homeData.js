@@ -1,56 +1,36 @@
-export const gallerySlides = [
-    {
-        id: 1,
-        image: "/images/CardImages/p4_makariguard_04.png", alt: ""
-    },
-    {
-        id: 2,
-        image: "/images/CardImages/p4_makariguard_05.png", alt: ""
-    },
-    {
-        id: 3,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-    {
-        id: 4,
-        image: "/images/CardImages/p4_makariguard_09.png", alt: ""
-    },
-    {
-        id: 5,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-    {
-        id: 6,
-        image: "/images/CardImages/p4_makariguard_06.png", alt: ""
-    },
-
-];
-
 export const heroSlides = [
     {
         id: 1,
-        image: "/images/CardImages/p4_makariguard_05.png",
+        image: "/images/GalleryImages/p3_makariguard_05.jpg",
         title: "Powering a Cleaner Future",
         description: "Harnessing the force of flowing water to deliver clean, renewable energy for generations to come.",
     },
     {
         id: 2,
-        image: "/images/CardImages/p4_makariguard_10.png",
+        image: "/images/GalleryImages/p3_makariguard_10.jpg",
         title: "Engineering with Purpose",
         description: "Built on advanced hydropower technology, reflecting a strong commitment to innovation, efficiency and sustainability",
     },
     {
         id: 3,
-        image: "/images/CardImages/p4_makariguard_04.png",
+        image: "/images/GalleryImages/p3_makariguard_04.jpg",
         title: "Among Asia's Highest-Head Hydropower Projects",
         description: "Makari Gad stands out as one of the highest-head hydropower plants in the region - engineered under some of the most challenging terrain and conditions.",
     },
     {
         id: 4,
-        image: "/images/CardImages/p4_makariguard_37.png",
+        image: "/images/GalleryImages/p3_makariguard_37.jpg",
         title: "Energy that Creates Lasting Impact",
-        description: "From environmental stewardship to community development, Makari Gasd delivers power that supports people, progess and the planet.",
+        description: "From environmental stewardship to community development, Makari Gad delivers power that supports people, progess and the planet.",
     },
+];
+
+export const intro = [
+    {
+        id: 1,
+        title: "Harnessing Nature's Power for a Sustainable Future",
+        description: " Makari Gad Hydro Power Plant, a visionary initiative that taps into the energy of flowing water to create a cleaner, greener future. Explore the marvels of renewable energy and discover how we're investing in innovation to power generations to come."
+    }
 ];
 
 export const stats = [
@@ -59,6 +39,13 @@ export const stats = [
     { id: 2, value: "2,767 Mn NRs", label: "Project Value" },
     { id: 3, value: "3+", label: "Years of Experience" },
 
+];
+export const qehs = [
+    {
+        id: 1,
+        title: "Quality, Environment, Health and Safety",
+        description: "We are committed to continuous improvement of Quality, Environment, Health and Safety performance of its operations by benchmarking with best-in-class standards. We stay focused on attaining and maintaining the highest standards of Quality, Environment, Health and Safety in selection, design, procurement, construction, operation and maintenance of assets across their life cycle."
+    }
 ];
 
 export const harmonyCards = [

@@ -94,7 +94,7 @@ export default function LeadersSection({ leaders = [], title = "Meet Our Leaders
               style={{ background: "linear-gradient(to bottom, #bae6fd, #ffffff)" }}
             >
               <img
-                src={selected.image || "https://placehold.co/128x128"}
+                src={selected.image}
                 alt={selected.name}
                 className="w-full h-full object-cover object-top"
               />
