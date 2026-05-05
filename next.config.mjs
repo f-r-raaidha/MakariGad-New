@@ -3,6 +3,7 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   allowedDevOrigins: ['127.0.0.1', 'test.mydomain.com', '172.30.16.1'],
+  output: 'standalone',
 };
 
 export default nextConfig;
