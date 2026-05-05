@@ -1,5 +1,7 @@
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import { intro, qehs } from "@/data/homeData";
+
 
 export default function HomeGradient({ stats, harmonyCards }) {
     return (
@@ -10,18 +12,21 @@ export default function HomeGradient({ stats, harmonyCards }) {
 
             <div className="max-w-4xl mx-auto px-4 py-16 flex flex-col items-center gap-10">
 
-                {/* ── 1. Intro heading + paragraph ── */}
+                {/* ── 1. Intro heading + paragraph ── intro */}
                 <FadeIn>
-                    <div className="text-center flex flex-col items-center gap-4 max-w-4xl">
-                        <h2 className="text-sky-500 text-2xl md:text-3xl font-bold font-['Poppins'] leading-snug">
-                            Harnessing Nature&#39;s Power for a Sustainable Future
-                        </h2>
-                        <p className="text-gray-500 text-sm md:text-base font-['Poppins'] leading-relaxed">
-                            Makari Gad Hydro Power Plant, a visionary initiative that taps into the energy of
-                            flowing water to create a cleaner, greener future. Explore the marvels of renewable
-                            energy and discover how we&#39;re investing in innovation to power generations to come.
-                        </p>
+                    <div className="text-center flex flex-col items-center max-w-4xl">
+                        {intro.map((intro) => (
+                            <div key={intro.id} className="flex flex-col items-center gap-4">
+                                <h2 className="text-sky-500 text-2xl md:text-3xl font-bold font-['Poppins'] leading-snug">
+                                    {intro.title}
+                                </h2>
+                                <p className="text-gray-500 text-sm md:text-base font-['Poppins'] leading-relaxed">
+                                    {intro.description}
+                                </p>
+                            </div>
+                        ))}
                     </div>
+
                 </FadeIn>
 
                 {/* ── 2. Stats row ── */}
@@ -40,19 +45,21 @@ export default function HomeGradient({ stats, harmonyCards }) {
                     </div>
                 </FadeIn>
 
-                {/* ── 3. QEHS — white card with rounded corners ── */}
+                {/* ── 3. QEHS — white card with rounded corners ── qehs*/}
                 <FadeIn delay={0.2}>
                     <div className="bg-white rounded-3xl shadow-sm text-center px-10 py-5 w-full max-w-5xl">
-                        <h3 className="text-sky-500 text-xl md:text-2xl font-bold font-['Poppins'] mb-4">
-                            Quality, Environment, Health and Safety
-                        </h3>
-                        <p className="text-gray-500 text-sm md:text-base font-['Poppins'] leading-relaxed">
-                            We are committed to continuous improvement of Quality, Environment, Health and Safety
-                            performance of its operations by benchmarking with best-in-class standards. We stay
-                            focused on attaining and maintaining the highest standards of Quality, Environment,
-                            Health and Safety in selection, design, procurement, construction, operation and
-                            maintenance of assets across their life cycle.
-                        </p>
+                        {qehs.map((qehs) => (
+                            <div key={qehs.id} className="flex flex-col items-center">
+                                <h3 className="text-sky-500 text-xl md:text-2xl font-bold font-['Poppins'] mb-4">
+                                    {qehs.title}
+                                </h3>
+                                <p className="text-gray-500 text-sm md:text-base font-['Poppins'] leading-relaxed">
+                                    {qehs.description}
+                                </p>
+                            </div>
+                        ))}
+
+
                     </div>
                 </FadeIn>
 

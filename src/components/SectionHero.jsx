@@ -7,11 +7,11 @@ export default function SectionHero({ title, backgroundImage, overlayOpacity = 3
       {/* ── Background image — fills full screen width ── */}
       {backgroundImage ? (
         <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-full bg-cover bg-top bg-no-repeat"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900" />
+        <div className="absolute inset-0 bg-linear-to-br from-slate-800 via-slate-700 to-slate-900" />
       )}
 
       {/* ── Subtle dark overlay for legibility ── */}

@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { FiSend } from "react-icons/fi";
 
 
-export function SubmitButton() {
+export function SubmitButton({ disabled: captchaNotDone = false}) {
     const { pending } = useFormStatus();
+    const isDisabled = pending || captchaNotDone;
 
     return (
         <div className="w-full">
@@ -30,15 +31,16 @@ export function SubmitButton() {
                     <FiSend className="w-4 h-4 ml-4" />
                 </span>
 
-                {/* Animated shine effect */}
-                {!pending && (
+                {!isDisabled && (
                     <motion.span
-                        className={"absolute inset-0 bg-white opacity-10"}
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
+                        className="absolute inset-0 bg-white opacity-10"
+                        initial={{ x:"-100%" }}
+                        whileHover={{ x: "100%"}}
                         transition={{ duration: 0.6 }}
                     />
                 )}
+
+                
             </motion.button>
         </div>
     );
